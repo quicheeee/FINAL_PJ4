@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.*;
 
 public class Messenger {
 	private static final String FILENAME = "messages.ser";
@@ -203,22 +204,14 @@ public class Messenger {
 		conversation.addMessage(sender, receiver, message, disappearing);
 		Messenger.writeMessages();
 	}
-	 public static List<String[]> createCsvData(User u) {
-        List<String[]> list = new ArrayList<>();
-        String [] headers = {"Timestamp", "Sender", "Receiver", "Message"};
-        list.add(headers);
-        for(Message m: getMessagesForUser(u)){
-            String [] msg = {m.getCreateDate(), m.getSender().getName(), m.getReceiver().getName(), m.getMessage()};
-            list.add(msg);
-        }
-        return list;
-    }
+
     // method takes given customer and seller data and adds it to a String[] with headers
-    public static List<String[]> createCsvDataForConvo(Customer c, Seller s, Conversation convo){
+   /*
+    public static List<String[]> createCsvDataForConvo(Customer c, Seller s){
         List<String[]> list = new ArrayList<>();
         String [] headers = {"Timestamp", "Sender", "Receiver", "Message"};
         list.add(headers);
-        for(Message m: conversation.getMessagesForUser(c)){
+        for(Message m: getMessagesForUser(c)){
             if(m.getSender().equals(s) || m.getReceiver().equals(s)) {
                 String[] msg = {m.getCreateDate(), m.getSender().getName(), m.getReceiver().getName(), m.getMessage()};
                 list.add(msg);
@@ -226,32 +219,11 @@ public class Messenger {
         }
         return list;
     }
-    // This method takes user data and creates a new CSV file with said data
-    public static void convertToCSV(String fileName, User u){
-        File csvOutput = new File(fileName);
-        try{
-            FileWriter fw = new FileWriter(csvOutput);
-            PrintWriter pw = new PrintWriter(fw);
-            for(String[] s: createCsvData(u)){
-                int count = 1;
-                for(String s1: s){
-                    if(count != 4) {
-                        pw.print(s1);
-                        pw.print(",");
-                        count++;
-                    } else{
-                        pw.println(s1);
-                    }
-                }
-            }
-            pw.close();
-        } catch (FileNotFoundException fnfe){
-        } catch(IOException ioe){
 
-        }
-    }
+    */
+
     // method converts desired file to a csv file
-    public static void convertToCSVForConvo (String fileName, Customer c, Seller s2){
+   /* public static void convertToCSVForConvo (String fileName, Customer c, Seller s2){
         File csvOutput = new File(fileName);
         try{
             FileWriter fw = new FileWriter(csvOutput);
@@ -274,6 +246,8 @@ public class Messenger {
 
         }
     }
+
+    */
 
 }
 

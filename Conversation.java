@@ -126,4 +126,5 @@ public class Conversation implements Serializable {
             sb.append("[" + m.getSender().getName() + "] " + m.getMessage() + "\n");
         return sb.toString();
     }
+
 }

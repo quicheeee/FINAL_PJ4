@@ -1,7 +1,6 @@
 package pj4;
+import java.io.*;
 import java.util.*;
-import java.io.BufferedReader;
-import java.io.FileReader;
 
 public class Dashboard {
 
@@ -541,14 +540,49 @@ public class Dashboard {
             System.out.println("There are no conversations to import to.");
         else {
             printConversationList(convs, user);
-
+            boolean invalid = true;
+            int i = 0;
+            while(invalid){
             System.out.println("Which conversation would you like to export:");
             String convNums = scanner.nextLine();
+            try {
+                i = Integer.parseInt(convNums);
+                invalid = false;
+            } catch (NumberFormatException nfe) {
+                invalid = true;
+            }}
             System.out.println("Please input a file path to write to ending in .csv");
             String input = scanner.nextLine();
 
-            //Write your export code here
+            List<String[]> list = new ArrayList<>();
+            String [] headers = {"Timestamp", "Sender", "Receiver", "Message"};
+            list.add(headers);
+            for(Message m: convs.get(i-1).getMessages()){
+                String[] msg = {m.getCreateDate(), m.getSender().getName(), m.getReceiver().getName(), m.getMessage()};
+                list.add(msg);
+            }
 
+            try{
+                File csvOutput = new File(input);
+                FileWriter fw = new FileWriter(csvOutput);
+                PrintWriter pw = new PrintWriter(fw);
+                for(String[] s: list){
+                    int count = 1;
+                    for(String s1: s){
+                        if(count != 4) {
+                            pw.print(s1);
+                            pw.print(",");
+                            count++;
+                        } else{
+                            pw.println(s1);
+                        }
+                    }
+                }
+                pw.close();
+            } catch (FileNotFoundException fnfe){
+            } catch(IOException ioe){
+
+            }
         }
     }
 
