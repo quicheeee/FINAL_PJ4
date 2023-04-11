@@ -51,6 +51,9 @@ public class Seller extends User
         return listOfStores;
     }
 
+    // following method adds a customer by creating an array list that sets the customer list
+    // into each element of the array list. A new customer is added to the arraylist then the entire
+    // array list of customers is returned with the next for loop
     public void addCustomer(Customer c) {
         ArrayList<Customer> arr = new ArrayList<>();
         for (int i = 0; i < customerList.length; i++) {
@@ -64,7 +67,7 @@ public class Seller extends User
         }
     }
 
-
+    // following method gets the customer at a certain index from a file named "accounts.ser"
     public Customer getCustomer(int index){
         File f = new File("accounts.ser");
         int count = 1;
@@ -87,35 +90,9 @@ public class Seller extends User
         return null;
     }
 
-    /*public String searchCustomer(int customerID) {
-        String customerEmail = "Customer Not Found";
-        for (int i = 0; i < customerList.length; i++) {
-            if (customerList[i].getCustomerID() == (customerID)) {
-                customerEmail = customerList[i].getEmail();
-            }
-        }
-        return customerEmail;
-    }
-
-     */
-    public void displayCustomers(){
-        File f = new File("accounts.ser");
-        int count = 1;
-        for(User u: getUsers()){
-            if(u instanceof Customer){
-                if(!this.getBlockedUsers().contains(u)) {
-/*
-                    if(!this.getBlockedBy().contains(u)) {
-                        if(!u.getInvisibleTo().contains(this)) {
-                            System.out.println(count++ + ". " + u.getEmail());
-                        }
-                    }
-*/
-                }
-            }
-        }
-    }
-
+    @Override
+    // following method checks if an object is an instance of a seller before creating a seller object that returns true
+    // if the seller's email and password equals that of a seller that currently exists and returns false if it is not equal
     public boolean equals(Object o){
         if(o instanceof Seller) {
             Seller seller = (Seller) o;
@@ -126,17 +103,13 @@ public class Seller extends User
         return false;
     }
 
+    // following method checks if the seller can message a customer by checking if an object is either an instance of
+    // a seller or customer then returns true if one of them are, then false if both are untrue
     public boolean canMessage(Object o) {
         if (o instanceof Seller || o instanceof Customer) {
             return true;
         }
         return false;
     }
-
-
-    // add equals
-//        public Message newMessage() //in progress
-//        public Message newMessage() //in progress
-
 
     }
