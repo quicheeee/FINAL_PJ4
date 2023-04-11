@@ -17,10 +17,10 @@ public class User implements Serializable {
     private String email; //the email address of the user
     private String password; //the password of the user
 
-    private ArrayList<User> blockedUsers;
-    private ArrayList<String> filters;
+    private ArrayList<User> blockedUsers; //this is an arrayList of blocked Users
+    private ArrayList<String> filters; //this is an arrayList that stores the filters
 
-    private static ArrayList<User> allUsers = null;
+    private static ArrayList<User> allUsers = null; //this is an arrayList of all users
     private static final long serialVersionUID = -5554757084812506737L;
 
     //Constructor to create a user given their name, email, and password
@@ -240,7 +240,7 @@ public class User implements Serializable {
         return false;
     }
 
-    //this methhod deletes a user, removing them from the file "accounts.ser"
+    //this method deletes a user, removing them from the file "accounts.ser"
     public static void deleteUser(User u) {
         Messenger.deleteConversationsForUser(u);
 
@@ -249,12 +249,14 @@ public class User implements Serializable {
         writeUsers(temp);
     }
 
+    //this method gets the filters that have been applied for the given user
     public ArrayList<String> getFilters() {
         if (filters == null)
             filters = new ArrayList<String>();
         return filters;
     }
 
+    //this method adds a filter to the user
     public void addFilter(String original, String replacement) {
         if((original == null) || (replacement == null))
             throw new IllegalArgumentException("Invalid filter strings");
@@ -264,6 +266,7 @@ public class User implements Serializable {
         User.writeUsers(User.getUsers());
     }
 
+    //this method applies the filters that a user has applied
     public String applyFilters(String message) {
         if (filters == null)
             return message;
