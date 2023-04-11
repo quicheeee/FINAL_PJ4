@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Store implements Serializable {
     private Seller seller;
-    private List<Messenger2> messages;
+//    private List<Messenger2> messages;
     private String storeName;
 
     private static final long serialVersionUID = -664171850626483574L;
@@ -36,7 +36,7 @@ public class Store implements Serializable {
     public Store(Seller seller, String storeName) {
 
         this.seller = seller;
-        this.messages = new ArrayList<>();
+        //this.messages = new ArrayList<>();
         this.storeName = storeName;
 
     }
@@ -63,6 +63,7 @@ public class Store implements Serializable {
         this.storeName = storeName;
     }
 
+/*
     public void addMessages(Messenger2 message) {
         messages.add(message);
     }
@@ -138,6 +139,7 @@ public class Store implements Serializable {
         }
         return numCustomerMessages;
     }
+*/
 
 
     /* public int getMessagesSentToStore() {
@@ -151,6 +153,7 @@ public class Store implements Serializable {
     }
      */
 
+/*
     public int getMessagesReceivedByStore() {
         int numMessagesReceived = 0;
         for (Messenger2 message : messages) {
@@ -191,7 +194,9 @@ public class Store implements Serializable {
         Collections.sort(commonWords, Collections.reverseOrder());
         return commonWords;
     }
+*/
 
+/*
     public void printCustomerDashboard(Customer customer) {
         //  Map<Customer, Integer> customers = getNumCustomerMessages();
         // Map<String, Integer> commonWords = getMostCommonWordsSell();
@@ -284,6 +289,7 @@ public class Store implements Serializable {
             }
         }
     }
+*/
 
     public static boolean newStore(String name, Seller seller) {
         File list = new File("stores.ser");
