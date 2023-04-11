@@ -51,10 +51,6 @@ public class Seller extends User
         }
     }
 
-    public Messenger2 createConversation(Customer c1, Store st){
-        Messenger2 c = new Messenger2(c1, this, st);
-        return c;
-    }
 
     public Customer getCustomer(int index){
         File f = new File("accounts.ser");
