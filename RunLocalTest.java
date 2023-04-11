@@ -345,44 +345,52 @@ public class RunLocalTest {
                     "spongebob123" + System.lineSeparator() +
                     "2" + System.lineSeparator() +
                     "2" + System.lineSeparator() + "1" +
-                    System.lineSeparator() + "4" + System.lineSeparator()
-                    + "2" + System.lineSeparator() + "1" +
-                    System.lineSeparator() + "2"
-                    + System.lineSeparator() + "5" + System.lineSeparator()
-                    + "Bob" + System.lineSeparator() + "1"
-                    + System.lineSeparator() + "9" + System.lineSeparator();
+                    System.lineSeparator() + "2" + System.lineSeparator()
+                    + "1" + System.lineSeparator() + "2" +
+                    System.lineSeparator() + "1"
+                    + System.lineSeparator() + "3" + System.lineSeparator()
+                    + "5" + System.lineSeparator() + "1"
+                    + System.lineSeparator() + "import.txt" + System.lineSeparator()
+                    + "3" + System.lineSeparator() + "bob" + System.lineSeparator() +
+                    "1" + System.lineSeparator() + "exit" + System.lineSeparator();
 
             // Pair the input with the expected result
             String expected = "Welcome to the messaging platform!" + System.lineSeparator() +
                     "Would you like to:\n1. Create an Account\n2. Sign Into an Account" + System.lineSeparator() +
                     "What is your email address?" + System.lineSeparator() +
-                    "What is your password?" + System.lineSeparator() +
-                    "What action would you like to take:\n1. Send a new message\n2. View messages\n3. Edit message\n4. Delete message\n" +
-                    "5. Block a User\n6. View Store Statistics\n7. Create a Store\n8. Delete Account\n9. Exit" + System.lineSeparator() +
-                    "Num          Sender        Receiver New\n" +
-                    "  1          Krusty          Spongebob   N" + System.lineSeparator() +
-                    "Which message would you like to view:" + System.lineSeparator() + "Invalid Input" + System.lineSeparator() + "Which message would you like to view:" +
-                    System.lineSeparator() + "[Krusty] Greetings Spongebob! ARGHHH!!!" + System.lineSeparator() +
-                    "What action would you like to take:\n1. Send a new message\n2. View messages\n3. Edit message\n4. Delete message\n" +
-                    "5. Block a User\n6. View Store Statistics\n7. Create a Store\n8. Delete Account\n9. Exit" + System.lineSeparator() +
-                    "Num          Sender        Receiver New\n" +
-                    "  1          Krusty          Spongebob   N\n" + System.lineSeparator() + "Invalid Input\n" +
-                    "Which message would you like to delete:" + System.lineSeparator() + "What action would you like to take:\n" +
-                    "1. Send a new message\n2. View messages\n3. Edit message\n4. Delete message\n" +
-                    "5. Block a User\n6. View Store Statistics\n7. Create a Store\n8. Delete Account\n9. Exit" + System.lineSeparator() +
-                    "There are no messages to view\n" + System.lineSeparator() + "What action would you like to take:\n" +
-                    "1. Send a new message\n2. View messages\n3. Edit message\n4. Delete message\n" +
-                    "5. Block a User\n6. View Store Statistics\n7. Create a Store\n8. Delete Account\n9. Exit" + System.lineSeparator() +
-                    "Please search user you want to block:" + System.lineSeparator() + "1. bob@gmail.com\n" +
-                    "Please select a user to block:" + System.lineSeparator() + "The block was set!\n" + System.lineSeparator() +
-                    "What action would you like to take:\n" +
-                    "1. Send a new message\n2. View messages\n3. Edit message\n4. Delete message\n" +
-                    "5. Block a User\n6. View Store Statistics\n7. Create a Store\n8. Delete Account\n9. Exit" + System.lineSeparator();
+                    "What is your password?" + System.lineSeparator() + "You have NEW messages!!!" + "\n" +
+                    "What action would you like to take:\n" + "1. Send a new message\n" + "2. View conversations\n" +
+                    "3. Block a User\n" + "4. Export\n" + "5. Import\n" + "6. Delete Account\n" + "7. Add Filters\n" +
+                    "8. Exit" + System.lineSeparator() + "Num                       Customer                         Seller                          Store New\n" +
+                    "  1                      Spongebob                         Krusty                The Krusty Krab   Y\n" +
+                    "Which conversation would you like to view:" + System.lineSeparator() + "Invalid Input\n" +
+                    "Which conversation would you like to view:" + System.lineSeparator() + "1  [Spongebob] Hello Mr. Krabs!\n" +
+                    "2  [Krusty] Greetings Spongebob! ARGHHH!!!" + "\n" + "Actions:\n" + "1. Edit a message\n" + "2. Delete a message\n" +
+                    "3. Back to menu" + System.lineSeparator() + "Choose Message Number:" + System.lineSeparator() + "\n" +
+                    "What action would you like to take:\n" + "1. Send a new message\n" + "2. View conversations\n" + "3. Block a User\n" +
+                    "4. Export\n" + "5. Import\n" + "6. Delete Account\n" + "7. Add Filters\n" + "8. Exit" + System.lineSeparator() +
+                    "Num                       Customer                         Seller                          Store New\n" +
+                    "  1                      Spongebob                         Krusty                The Krusty Krab   N\n" +
+                    "Which conversation would you like to view:" + System.lineSeparator() + "1  [Krusty] Greetings Spongebob! ARGHHH!!!" +
+                    "\n" + "Actions:\n" + "1. Edit a message\n" + "2. Delete a message\n" + "3. Back to menu" + System.lineSeparator() +
+                    "\n" + "What action would you like to take:\n" + "1. Send a new message\n" + "2. View conversations\n" + "3. Block a User\n" +
+                    "4. Export\n" + "5. Import\n" + "6. Delete Account\n" + "7. Add Filters\n" + "8. Exit" + System.lineSeparator() +
+                    "Num                       Customer                         Seller                          Store New\n" +
+                    "  1                      Spongebob                         Krusty                The Krusty Krab   N\n" +
+                    "Which conversation would you like to import to:" + System.lineSeparator() + "Please input the file path of the text file to import:"
+                    + System.lineSeparator() + "File could not be read\n" + "What action would you like to take:\n" + "1. Send a new message\n" +
+                    "2. View conversations\n" + "3. Block a User\n" + "4. Export\n" + "5. Import\n" + "6. Delete Account\n" +
+                    "7. Add Filters\n" + "8. Exit" + System.lineSeparator() + "Please search user you want to block:" + System.lineSeparator() +
+                    "1. bob@gmail.com\n" + "Please select a user to block:" + System.lineSeparator() + "The block was set!\n" + "What action would you like to take:\n" +
+                    "1. Send a new message\n" + "2. View conversations\n" + "3. Block a User\n" + "4. Export\n" + "5. Import\n" +
+                    "6. Delete Account\n" + "7. Add Filters\n" + "8. Exit" + System.lineSeparator() + "Invalid Input. Exiting...\n" +
+                    "null" + System.lineSeparator();
 
-// spongebob logs in, views messages, puts an invalid input, then views correct message from krusty, tries to delete the message
-// but puts an invalid input, deletes the message,then views the message to find there are none.
-// then spongebob blocks the user (seller) bob then exi1
-// ts
+
+// spongebob logs in, views messages, puts an invalid input, then views correct message from krusty, deletes the message,
+// then views the message to find there are none. then spongebob imports a .txt file to
+// the conversation but is incorrect, then blocks user (seller) bob then tries to adds invalid input (letter to exit)
+
 
             // Runs the program with the input values
             receiveInput(input);
@@ -407,34 +415,54 @@ public class RunLocalTest {
                     "1" + System.lineSeparator() +
                     "2" + System.lineSeparator() + "spongebob" +
                     System.lineSeparator() + "1" + System.lineSeparator()
-                    + "1" + System.lineSeparator() + "Hi Karen!" +
-                    System.lineSeparator() + "7"
-                    + System.lineSeparator() + "Bob's Falafels" + System.lineSeparator()
-                    + "9" + System.lineSeparator();
+                    + "1" + System.lineSeparator() + "1" +
+                    System.lineSeparator() + "1" + System.lineSeparator() + "Hi Karen!" +
+                    System.lineSeparator() + "5" + System.lineSeparator() + "1" +
+                    System.lineSeparator() + "wrongImport.txt" + System.lineSeparator()
+                    + "6" + System.lineSeparator() + "Bob's Falafels" +
+                    System.lineSeparator() + "1" + System.lineSeparator() +
+                    "1" + System.lineSeparator() + "1" + System.lineSeparator() +
+                    "2" + System.lineSeparator() + "Do you like falafels?" +
+                    System.lineSeparator() + "9" + System.lineSeparator();
 
             // Pair the input with the expected result
             String expected = "Welcome to the messaging platform!" + System.lineSeparator() +
                     "Would you like to:\n1. Create an Account\n2. Sign Into an Account" + System.lineSeparator() +
-                    "What is your email address?" + System.lineSeparator() +
-                    "What is your password?" + System.lineSeparator() + "You have NEW messages!!!\n" + System.lineSeparator() +
-                    "What action would you like to take:\n1. Send a new message\n2. View messages\n3. Edit message\n4. Delete message\n" +
-                    "5. Block a User\n6. View Store Statistics\n7. Create a Store\n8. Delete Account\n9. Exit" + System.lineSeparator() +
-                    "Would you like to:\n" + "1. Select a customer to message\n" + "2. Search for a customer to message" + System.lineSeparator() +
-
+                    "What is your email address?" + System.lineSeparator() + "What is your password?" + System.lineSeparator()
+                    + "\n" + "What action would you like to take:\n" + "1. Send a new message\n" + "2. View messages\n" +
+                    "3. Block a User\n" + "4. Export\n" + "5. Import\n" + "6. Create a Store\n" + "7. Delete Account\n" +
+                    "8. Add Filters\n" + "9. Exit" + System.lineSeparator() + "Would you like to:\n" +
+                    "1. Select a customer to message\n" + "2. Search for a customer to message" + System.lineSeparator() +
                     "Please enter customer you are searching for:" + System.lineSeparator() + "No customers match" + System.lineSeparator() +
-                    "What action would you like to take:\n1. Send a new message\n2. View messages\n3. Edit message\n4. Delete message\n" +
-                    "5. Block a User\n6. View Store Statistics\n7. Create a Store\n8. Delete Account\n9. Exit" +
-                    System.lineSeparator() + "Would you like to:\n" + "1. Select a customer to message\n" + "2. Search for a customer to message" + System.lineSeparator() +
-                    "1. karen@gmail.com\n" + "Please select a customer to message:" + System.lineSeparator() + "What message would you like to send?" +
-                    System.lineSeparator() + "Your message is sent! Thank you." + System.lineSeparator() +
-                    "What action would you like to take:\n1. Send a new message\n2. View messages\n3. Edit message\n4. Delete message\n" +
-                    "5. Block a User\n6. View Store Statistics\n7. Create a Store\n8. Delete Account\n9. Exit" + System.lineSeparator() +
-                    "What would you like your store to be named?" + System.lineSeparator() + "What action would you like to take:\n" +
-                    "1. Send a new message\n2. View messages\n3. Edit message\n4. Delete message\n" +
-                    "5. Block a User\n6. View Store Statistics\n7. Create a Store\n8. Delete Account\n9. Exit" + System.lineSeparator();
+                    "\n" + "What action would you like to take:\n" + "1. Send a new message\n" + "2. View messages\n" +
+                    "3. Block a User\n" + "4. Export\n" + "5. Import\n" + "6. Create a Store\n" + "7. Delete Account\n" +
+                    "8. Add Filters\n" + "9. Exit" + System.lineSeparator() + "Would you like to:\n" +
+                    "1. Select a customer to message\n" + "2. Search for a customer to message" + System.lineSeparator() +
+                    "1. karen@gmail.com\n" + "Please select a customer to message:" + System.lineSeparator() +
+                    "1. Bob's Burgers\n" + "Please select a store:" + System.lineSeparator() + "What message would you like to send?" +
+                    "Your message is sent! Thank you.\n" + "What action would you like to take:\n" + "1. Send a new message\n" +
+                    "2. View messages\n" + "3. Block a User\n" + "4. Export\n" + "5. Import\n" + "6. Create a Store\n" +
+                    "7. Delete Account\n" + "8. Add Filters\n" + "9. Exit" + System.lineSeparator() +
+                    "Num                       Customer                         Seller                          Store New\n" +
+                    "  1                          Karen                            Bob                  Bob's Burgers   N\n" +
+                    "Which conversation would you like to import to:" + System.lineSeparator() +
+                    "Please input the file path of the text file to import:" + System.lineSeparator() + "Your message has been imported!\n" +
+                    "What action would you like to take:\n" + "1. Send a new message\n" + "2. View messages\n" + "3. Block a User\n" +
+                    "4. Export\n" + "5. Import\n" + "6. Create a Store\n" + "7. Delete Account\n" + "8. Add Filters\n" + "9. Exit"
+                    + System.lineSeparator() + "What would you like your store to be named?" + System.lineSeparator() + "Store added.\n" +
+                    "What action would you like to take:\n" + "1. Send a new message\n" + "2. View messages\n" + "3. Block a User\n" +
+                    "4. Export\n" + "5. Import\n" + "6. Create a Store\n" + "7. Delete Account\n" + "8. Add Filters\n" + "9. Exit" +
+                    System.lineSeparator() + "Would you like to:\n" + "1. Select a customer to message\n" +
+                    "2. Search for a customer to message" + System.lineSeparator() + "1. karen@gmail.com\n" +
+                    "Please select a customer to message:" + System.lineSeparator() + "1. Bob's Burgers\n" + "2. Bob's Falafels\n" +
+                    "Please select a store:" + System.lineSeparator() + "What message would you like to send?" + System.lineSeparator() +
+                    "Your message is sent! Thank you.\n" + "What action would you like to take:\n" + "1. Send a new message\n" +
+                    "2. View messages\n" + "3. Block a User\n" + "4. Export\n" + "5. Import\n" + "6. Create a Store\n" + "7. Delete Account\n" +
+                    "8. Add Filters\n" + "9. Exit" + System.lineSeparator();
+
 
 // Seller bob logs in with email and passwords, tries to send message, searches for spongebob, can't find spongebob, searches for karen
-            // sends message to karen, creates store named Bob's Falafels, exits.
+            // sends message to karen, imports message, then exports message and creates store named Bob's Falafels, exits.
 
             // Runs the program with the input values
             receiveInput(input);
@@ -449,7 +477,63 @@ public class RunLocalTest {
             assertEquals("Make sure that all your inputs are correct and your messages were correct ",
                     expected.trim(), output.trim());
         }
-        // customer karen logs in, views message, searches for store to send message sends message to bob's falafels, deletes account, exits
+
+        @Test(timeout = 1000)
+        public void testCaseNine() {
+            String input = "2" + System.lineSeparator() +
+                    "karen@gmail.com" + System.lineSeparator() +
+                    "karen123" + System.lineSeparator() +
+                    "2" + System.lineSeparator() + "2" + System.lineSeparator()
+                    + "3" + System.lineSeparator() + "4" + System.lineSeparator() +
+                    "1" + System.lineSeparator() + "export.csv" + System.lineSeparator()
+                    + "2" + System.lineSeparator() + "1" + System.lineSeparator() + "3" +
+                    System.lineSeparator() + "6" + System.lineSeparator()
+                    + "1" + System.lineSeparator();
+
+            // Pair the input with the expected result
+            String expected = "Welcome to the messaging platform!" + System.lineSeparator() +
+                    "Would you like to:\n1. Create an Account\n2. Sign Into an Account" + System.lineSeparator() +
+                    "What is your email address?" + System.lineSeparator() + "What is your password?" + System.lineSeparator() +
+                    "You have NEW messages!!!" + "\n" + "What action would you like to take:\n" + "1. Send a new message\n" + "2. View messages\n" +
+                    "3. Block a User\n" + "4. Export\n" + "5. Import\n" + "6. Delete Account\n" + "7. Add Filters\n" + "8. Exit" +
+                    System.lineSeparator() + "Num                       Customer                         Seller                          Store New\n" +
+                    "  1                          Karen                            Bob                  Bob's Burgers   Y\n" +
+                    "  2                          Karen                            Bob                 Bob's Falafels   Y\n" +
+                    "Which conversation would you like to view:" + System.lineSeparator() + "1  [Bob] Do you like falafels?\n" +
+                    "Actions:\n" + "1. Edit a message\n" + "2. Delete a message\n" + "3. Back to menu" + System.lineSeparator() +
+                    "\n" + "What action would you like to take:\n" + "1. Send a new message\n" + "2. View conversations\n" +
+                    "3. Block a User\n" + "4. Export\n" + "5. Import\n" + "6. Delete Account\n" + "7. Add Filters\n" + "8. Exit"
+                    + System.lineSeparator() + "Num                       Customer                         Seller                          Store New\n" +
+                    "  1                          Karen                            Bob                  Bob's Burgers   Y\n" +
+                    "  2                          Karen                            Bob                 Bob's Falafels   N\n" +
+                    "Which conversation would you like to export:" + System.lineSeparator() + "Please input a file path to write to ending in .csv"
+                    + System.lineSeparator() + "\n" + "What action would you like to take:\n" + "1. Send a new message\n" + "2. View conversations\n" +
+                    "3. Block a User\n" + "4. Export\n" + "5. Import\n" + "6. Delete Account\n" + "7. Add Filters\n" + "8. Exit"
+                    + System.lineSeparator() + "Num                       Customer                         Seller                          Store New\n" +
+                    "  1                          Karen                            Bob                  Bob's Burgers   Y\n" +
+                    "  2                          Karen                            Bob                 Bob's Falafels   N\n" +
+                    "Which conversation would you like to view:" + System.lineSeparator() + "1  [Bob] Hi Karen!\n" +
+                    "2  [Bob] What are you doing?\n" + "Actions:\n" + "1. Edit a message\n" + "2. Delete a message\n" + "3. Back to menu" +
+                    System.lineSeparator() + "\n" + "What action would you like to take:\n" + "1. Send a new message\n" + "2. View conversations\n" +
+                    "3. Block a User\n" + "4. Export\n" + "5. Import\n" + "6. Delete Account\n" + "7. Add Filters\n" + "8. Exit"
+                    + System.lineSeparator() + "Are you sure you want to delete your account?\n" + "1. Yes\n" + "2. No" + System.lineSeparator();
+
+
+            // Runs the program with the input values
+            receiveInput(input);
+            Dashboard.main(new String[0]);
+
+            // Retrieves the output from the program
+            String output = getOutput();
+
+            // Trims the output and verifies it is correct.
+            expected = expected.replaceAll("\r\n", "\n");
+            output = output.replaceAll("\r\n", "\n");
+            assertEquals("Make sure that the correct store was selected",
+                    expected.trim(), output.trim());
+        }
+
+        // customer karen logs in, views message, exports bob's falafels, deletes account, exits
     }
 }
 
