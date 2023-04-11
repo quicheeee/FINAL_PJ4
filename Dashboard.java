@@ -9,7 +9,7 @@ import java.util.*;
  * in order to execute the remaining methods. This class also houses the main method which is the only runnable program in the project.
  * Addional static void methods allow for the manipulation of program's users.
  *
- * @author
+ * @author Amelia Williams, Meha Kavoori, Anish Puri, Tyler Barnett
  * @version Apr 10, 2022
  *
  *
