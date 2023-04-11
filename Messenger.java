@@ -5,11 +5,22 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.*;
-
+/**
+ * Messenger Class
+ *
+ * This class represents a Messenger object. The class is used to write, edit
+ * and search messages in messager.ser file.
+ *
+ * @authoer Amelia Williams, Meha Kavoori, Anish Puri, Tyler Barnett
+ *
+ * @version 04/10/2023
+ */
 public class Messenger {
-	private static final String FILENAME = "messages.ser";
-	private static ArrayList<Conversation> conversations = null;
+	private static final String FILENAME = "messages.ser"; // filename for file that holds messages
+	private static ArrayList<Conversation> conversations = null; // arrList of conversations
 
+	// method scans through contents of conversations ArrayList and looks for when they aren't null
+	// where they are not null, message objects from the messages arrList will be written to the messages.ser file
 	public static ArrayList<Conversation> getConversations() {
 		if (Messenger.conversations != null)
 			return Messenger.conversations;
@@ -40,6 +51,7 @@ public class Messenger {
 		return Messenger.conversations;
 	}
 
+	// writes additional message to a conversation in the message.ser file
 	public static void sendNewMessage(User sender, User receiver, String message, Boolean disappearing,
 									  Customer customer, Store store) {
 		Seller seller = store.getSeller();
@@ -55,6 +67,7 @@ public class Messenger {
 		Messenger.writeMessages();
 	}
 
+	//This method identifies and returns a conversation given its customer, seller, and store.
 	private static Conversation findConversation(Customer customer, Seller seller, Store store) {
 		ArrayList<Conversation> temp = Messenger.getConversations();
 		for (Conversation conv : temp) {
@@ -64,6 +77,7 @@ public class Messenger {
 		return null;
 	}
 
+	// writes conversations from conversations array to messages.ser file
 	public static void writeMessages() {
 		try {
 			File f = new File(Messenger.FILENAME);
@@ -79,6 +93,7 @@ public class Messenger {
 		}
 	}
 
+	// returns list of conversations with an inputted user involved
 	public static ArrayList<Conversation> getConversationsForUser(User u) {
 		ArrayList<Conversation> temp = Messenger.getConversations();
 		ArrayList<Conversation> results = new ArrayList<Conversation>();
@@ -127,42 +142,26 @@ public class Messenger {
 		return results;
 	}
 
+	//this method returns an array list with messages in a conversation for a given user
 	public static ArrayList<Message> getMessagesForUser(Conversation conversation, User user) {
 		ArrayList<Message> temp =  conversation.getMessagesForUser(user);
 		writeMessages(); //to write the read flags
 		return temp;
 	}
 
-/*
-	public static void editConversation(User sender, Conversation conversation, String newMessage,
-								   boolean disappearing) {
-		User receiver, 		conversation.addMessage();
-
-		StringBuilder sb = new StringBuilder(conversation.getMessage());
-		sb.append("\n");
-		sb.append(newMessage);
-
-//		Message rel = Messenger.findRelatedMessage(m);
-//		m.setMessage(sb.toString());
-		//m.setRead(true);
-//		if (rel != null) {
-//			rel.setMessage(sb.toString());
-		//	rel.setRead(false);
-//		}
-		Messenger.writeMessages();
-	}
-*/
-
+	//this method edits a message in a conversation to the revised content for the user
 	public static void editMessage(Conversation conversation, Message m, String content, User user) {
 		conversation.updateMessage(m, content, user);
 		writeMessages();
 	}
 
+	//this method deletes the message in a conversation for a given user
 	public static void deleteMessage(Conversation conversation, Message m, User current) {
 		conversation.deleteMessage(m, current);
 		writeMessages();
 	}
 
+	//deletes a conversation for a given user
 	public static void deleteConversationsForUser(User user) {
 		ArrayList<Conversation> temp = Messenger.getConversations();
 		ArrayList<Conversation> removeList = new ArrayList<Conversation>();
@@ -178,6 +177,7 @@ public class Messenger {
 		writeMessages();
 	}
 
+	//this method checks if there is ann unread message for the user, called when logged in
 	public static boolean existsUnreadMessagesForUser(User user) {
 		ArrayList<Conversation> temp = Messenger.getConversationsForUser(user);
 		for (Conversation conversation : temp) {
@@ -193,6 +193,7 @@ public class Messenger {
 		return false;
 	}
 
+	//this method adds a message to a conversation when a user sends a new message
 	public static void addMessageToConversation(Conversation conversation, User sender, String message,
 												boolean disappearing) {
 		User receiver;
@@ -204,50 +205,6 @@ public class Messenger {
 		conversation.addMessage(sender, receiver, message, disappearing);
 		Messenger.writeMessages();
 	}
-
-    // method takes given customer and seller data and adds it to a String[] with headers
-   /*
-    public static List<String[]> createCsvDataForConvo(Customer c, Seller s){
-        List<String[]> list = new ArrayList<>();
-        String [] headers = {"Timestamp", "Sender", "Receiver", "Message"};
-        list.add(headers);
-        for(Message m: getMessagesForUser(c)){
-            if(m.getSender().equals(s) || m.getReceiver().equals(s)) {
-                String[] msg = {m.getCreateDate(), m.getSender().getName(), m.getReceiver().getName(), m.getMessage()};
-                list.add(msg);
-            }
-        }
-        return list;
-    }
-
-    */
-
-    // method converts desired file to a csv file
-   /* public static void convertToCSVForConvo (String fileName, Customer c, Seller s2){
-        File csvOutput = new File(fileName);
-        try{
-            FileWriter fw = new FileWriter(csvOutput);
-            PrintWriter pw = new PrintWriter(fw);
-            for(String[] s: createCsvDataForConvo(c, s2)){
-                int count = 1;
-                for(String s1: s){
-                    if(count != 4) {
-                        pw.print(s1);
-                        pw.print(",");
-                        count++;
-                    } else{
-                        pw.println(s1);
-                    }
-                }
-            }
-            pw.close();
-        } catch (FileNotFoundException fnfe){
-        } catch(IOException ioe){
-
-        }
-    }
-
-    */
 
 }
 

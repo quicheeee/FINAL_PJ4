@@ -3,13 +3,23 @@ package pj4;
 import java.io.*;
 import java.util.*;
 
+/**
+ * Store Class
+ *
+ * The Store Class represents a Store object. The Store class has methods which allow users to
+ * get, set, and access a list of Stores.
+ *
+ * @author Amelia Williams, Meha Kavoori, Anish Puri, Tyler Barnett
+ * @version 4/10/2023
+ *
+ */
 public class Store implements Serializable {
-    private Seller seller;
-    private String storeName;
+    private Seller seller; // the store's seller
+    private String storeName; // the store's name
 
     private static final long serialVersionUID = -664171850626483574L;
 
-
+    // returns list of all store objects given all users
     public static ArrayList<Store> getAllStores() {
         ArrayList<Store> all = new ArrayList<Store>();
         for (User u : User.getUsers()) {
@@ -20,6 +30,7 @@ public class Store implements Serializable {
         return all;
     }
 
+    // returns all store obects associated with inputted user
     public static ArrayList<Store> getAllStoresForUser (User u) {
         ArrayList<Store> all = new ArrayList<Store>();
 
@@ -32,6 +43,7 @@ public class Store implements Serializable {
         return all;
     }
 
+    // Store constructor
     public Store(Seller seller, String storeName) {
 
         this.seller = seller;
@@ -40,6 +52,7 @@ public class Store implements Serializable {
     }
 
     @Override
+    //checks if the given object is equivalent to the current object
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -49,18 +62,22 @@ public class Store implements Serializable {
         return getStoreName().equals(store.getStoreName());
     }
 
+    // returns seller in Store
     public Seller getSeller() {
         return seller;
     }
 
+    // returns store name
     public String getStoreName() {
         return storeName;
     }
 
+    // sets the store name
     public void setStoreName(String storeName) {
         this.storeName = storeName;
     }
 
+    // given the inputted name and seller, method checks if store name already exists
     public static boolean newStore(String name, Seller seller) {
         File list = new File("stores.ser");
         ArrayList<Store> stores = Store.listStores(list, Store.getNumStoresCreated());
@@ -77,6 +94,7 @@ public class Store implements Serializable {
         return true;
     }
 
+    // given the inputted file and filelength, method returns an ArrayList of Stores
     public static ArrayList<Store> listStores(File f, int fileLength) {
         ArrayList<Store> stores = new ArrayList<>();
         try {
@@ -92,6 +110,7 @@ public class Store implements Serializable {
         return stores;
     }
 
+    // method reads numStoresCreated.txt file to get the number of stores created
     public static int getNumStoresCreated(){
         File f = new File("numStoresCreated.txt");
         try{
@@ -104,6 +123,7 @@ public class Store implements Serializable {
         }
     }
 
+    // method sets the number in the nmStoresCreated.txt file
     public static void setNumStoresCreated(int i){
         File f = new File ("numStoresCreated.txt");
         try{
@@ -116,6 +136,7 @@ public class Store implements Serializable {
         }
     }
 
+    // given arrList of stores, the method will write to a file the list of the stores.
     public static void writeStores(ArrayList<Store> stores, File f){
         try{
             FileOutputStream fos = new FileOutputStream(f);
