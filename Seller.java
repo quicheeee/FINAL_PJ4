@@ -91,7 +91,7 @@ public class Seller extends User
     }
 
     @Override
-    // following method checks if an object is an instance of a seller before creating a seller object that returns true
+    // following method checks if an object is an instance of a seller before casting to a seller object to check
     // if the seller's email and password equals that of a seller that currently exists and returns false if it is not equal
     public boolean equals(Object o){
         if(o instanceof Seller) {

@@ -2,8 +2,21 @@ package pj4;
 import java.io.*;
 import java.util.*;
 
+/**
+ * Dashboard class
+ *
+ * This class embodies all live interaction between the program and the user. The dashboard class utilizes the scanner for input
+ * in order to execute the remaining methods. This class also houses the main method which is the only runnable program in the project.
+ * Addional static void methods allow for the manipulation of program's users.
+ *
+ * @author
+ * @version Apr 10, 2022
+ *
+ *
+ */
 public class Dashboard {
 
+    // the main method utilizes scanner and other methods to run the messaging platform
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to the messaging platform!");
@@ -50,6 +63,7 @@ public class Dashboard {
         }
     }
 
+    // This method represents the menu given the user is a seller
     private static boolean sellerMenu(Scanner scanner, Seller seller) {
         System.out.printf("1. Send a new message\n2. View messages\n3. Block a User\n4. Export\n5. Import\n" +
                 "6. Create a Store\n7. Delete Account\n8. Add Filters\n9. Exit\n");
@@ -100,6 +114,7 @@ public class Dashboard {
         return true;
     }
 
+    // This method represents the menu given that the user is a customer
     public static boolean customerMenu(Scanner scanner, Customer c) {
         System.out.printf("1. Send a new message\n2. View conversations\n" + "3. Block a User\n" +
                 "4. Export\n5. Import\n6. Delete Account\n7. Add Filters\n8. Exit\n");
@@ -147,6 +162,7 @@ public class Dashboard {
         return true;
     }
 
+    // this method allows for a user to choose a conversation and display its messagaes
     private static void viewConversations(Scanner scanner, User user) {
         ArrayList<Conversation> convs = Messenger.getConversationsForUser(user);
 
@@ -173,6 +189,7 @@ public class Dashboard {
         }
     }
 
+    //This is the menu prints out the messages in the conversation and offers the user the choices to edit or delete them
     private static void messageMenu(Scanner scanner, User current, Conversation conversation, ArrayList<Message> messages) {
         if (messages.size() == 0)
             System.out.println("There are no messages to view");
@@ -214,6 +231,7 @@ public class Dashboard {
         }
     }
 
+    //this message prints the list of conversations for users to choose from
     private static void printConversationList(ArrayList<Conversation> conversations, User user) {
         int count = 1;
         System.out.printf("%3s %30s %30s %30s %3s\n", "Num", "Customer", "Seller", "Store", "New");
@@ -223,65 +241,7 @@ public class Dashboard {
         }
     }
 
-/*
-    private static void deleteConversation(Scanner scanner, User user) {
-        ArrayList<Message> msgs = Messenger.getConversationsForUser(user);
-
-        if (msgs.size() == 0)
-            System.out.println("There are no messages to view");
-        else {
-            printConversationList(msgs);
-
-            while (true)
-            {
-                System.out.println("Which message would you like to delete:");
-                int i = scanner.nextInt();
-                scanner.nextLine();
-                if ((i > msgs.size()) || (i <= 0)) {
-                    System.out.println("Invalid Input");
-                    continue;
-                } else {
-                    Messenger.deleteMessage(msgs.get(i - 1));
-                    break;
-                }
-            }
-        }
-    }
-*/
-
-/*
-    private static void editConversations(Scanner scanner, User user) {
-        ArrayList<Conversation> convs = Messenger.getConversationsForUser(user);
-
-        if (convs.size() == 0)
-            System.out.println("There are no conversations to view");
-        else {
-            printConversationList(convs);
-
-            while (true)
-            {
-                System.out.println("Which conversation would you like to edit:");
-                int i = scanner.nextInt();
-                scanner.nextLine();
-                if ((i > convs.size()) || (i <= 0)) {
-                    System.out.println("Invalid Input");
-                    continue;
-                } else {
-                    System.out.println(convs.get(i - 1).getMessageString());
-
-                    System.out.println("Please type your message:");
-                    String message = scanner.nextLine();
-
-
-                    Messenger.editMessage(user, convs.get(i - 1), message, false);
-                    System.out.println("Your conversation has been edited!");
-                    break;
-                }
-            }
-        }
-    }
-*/
-
+    //this method is for customers and inputs the store or seller to message and calls another method to send a seller a message
     private static void sendNewMailCustomer(Scanner scanner, User user) {
         int choice;
         System.out.println("Would you like to:");
@@ -317,6 +277,8 @@ public class Dashboard {
         }
     }
 
+    //this method is called by the previous method: given an ArrayList of stores,
+    // it allows a user to select one and send them a message
     private static void chooseStoreToMail(Scanner scanner, User user, ArrayList<Store> stores, Customer receiver) {
         if (stores.size() == 0)
             System.out.println("No stores exist to message");
@@ -340,6 +302,7 @@ public class Dashboard {
         }
     }
 
+    //this method is for sellers and inputs the customer to message and calls another method to send a customer a message
     private static void sendNewMailSeller (Scanner scanner, User user) {
         int choice;
         System.out.println("Would you like to:");
@@ -386,6 +349,7 @@ public class Dashboard {
         }
     }
 
+    //this method allows a user to create an account
     private static boolean createAccount(Scanner scanner) {
         int input;
         boolean invalidinput;
@@ -420,6 +384,7 @@ public class Dashboard {
         return invalidinput;
     }
 
+    //this method has a user search for and block another user
     private static void blockUser (Scanner scanner, User user) {
         ArrayList<User> users;
 
@@ -444,6 +409,8 @@ public class Dashboard {
         }
     }
 
+   //this method prints out the given prompt, the max input for the prompt,
+   // and prints out "invalid input" if the input is out of range
     private static int getChosenNumber(Scanner scanner, String prompt, int max) {
         while (true)
         {
@@ -460,6 +427,7 @@ public class Dashboard {
         }
     }
 
+    //this method is called if a user wants to delete their account and does so for them
     private static boolean deleteAccount (Scanner scanner, User user) {
         while (true) {
             System.out.println("Are you sure you want to delete your account?");
@@ -479,6 +447,7 @@ public class Dashboard {
         }
     }
 
+    //this method allows a seller to add another store to their list of stores
     private static void addStore(Scanner scanner, Seller seller) {
         System.out.println("What would you like your store to be named?");
         String storeName = scanner.nextLine();
@@ -495,6 +464,7 @@ public class Dashboard {
         }
     }
 
+    //this method allows a user to import a text file into their messages
     private static void importText(Scanner scanner, User user) {
         ArrayList<Conversation> convs = Messenger.getConversationsForUser(user);
 
@@ -516,6 +486,7 @@ public class Dashboard {
         }
     }
 
+    //this method reads a file and returns its contents as a string with new line characters in between lines
     private static String readFile(String fileName) {
         try {
             BufferedReader bfr = new BufferedReader(new FileReader(fileName));
@@ -533,6 +504,7 @@ public class Dashboard {
         }
     }
 
+    //this method scans in the choice of conversation to export and exports it to file.
     private static void exportText(Scanner scanner, User user) {
         ArrayList<Conversation> convs = Messenger.getConversationsForUser(user);
 
@@ -586,6 +558,7 @@ public class Dashboard {
         }
     }
 
+    //adds a filter to the user's content view
     private static void addFilters(Scanner scanner, User user)
     {
         ArrayList<String> filters = user.getFilters();

@@ -22,10 +22,11 @@ public class Message implements Serializable {
     private String createDate; // represents the date message was sent
     private boolean disappearing; // represents whether or not the message is one that dissapears
 
-    private User deletedFor = null;
+    private User deletedFor = null; //user that the message is deleted for
 
     private static final long serialVersionUID = 2L;
 
+    // following constructor passes all the previously stated fields along with a User message owner
     public Message(User sender, User receiver, String message, boolean disappearing) {
         this.sender = sender;
         this.receiver = receiver;
@@ -37,6 +38,9 @@ public class Message implements Serializable {
     }
 
     @Override
+    // following method checks if an object is equal to this and returns true. If not and o is null, it returns false.
+    // if true, a the object is cast as a message to check if sender equals the message sender, the receiver equals the message receiver
+    //, the owner equals  the message owner, and if the timestamp equals the message timestamp. if all of this is true, the message is returned
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -49,46 +53,42 @@ public class Message implements Serializable {
         return getMessage().equals(message1.getMessage());
     }
 
-    /*public boolean related(Object o) {
-        if (this == o) return false;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Message message1 = (Message) o;
-
-        if (!getSender().equals(message1.getSender())) return false;
-        if (!getReceiver().equals(message1.getReceiver())) return false;
-        if (!getCreateDate().equals(message1.getCreateDate())) return false;
-        return getMessage().equals(message1.getMessage());
-    }
-*/
+    // gets the sender field
     public User getSender() {
         return sender;
     }
 
+    // gets the receiver field
     public User getReceiver() {
         return receiver;
     }
 
+    // sets the Message field
     public void setMessage(String message) {
         this.message = message;
     }
 
+    // gets the message field
     public String getMessage() {
         return message;
     }
 
+    //gets the timestamp of when the message was created
     public String getCreateDate() {
         return this.createDate;
     }
 
+    // possible method for disappearing messages
     public boolean isDisappearing() {
         return disappearing;
     }
 
+    //returns user that the message is deleted for
     public User getDeletedFor() {
         return deletedFor;
     }
 
+    //sets user the message is deleted for
     public void setDeletedFor(User deletedFor) {
         this.deletedFor = deletedFor;
     }
