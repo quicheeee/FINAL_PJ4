@@ -555,9 +555,9 @@ public class Dashboard {
                 }
                 pw.close();
             } catch (FileNotFoundException fnfe) {
-                ;
+                System.out.println("Creating new file...");
             } catch (Exception e) {
-                ;
+                System.out.println("Exception Caught");
             }
         }
     }

@@ -214,6 +214,7 @@ public class User implements Serializable {
                 }
 
             } catch (EOFException ex) {
+                System.out.println("Accounts file processed");
             }
 
         } catch (Exception e) {
