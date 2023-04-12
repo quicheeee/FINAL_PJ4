@@ -38,8 +38,10 @@ public class Message implements Serializable {
 
     @Override
     // following method checks if an object is equal to this and returns true. If not and o is null, it returns false.
-    // if true, a the object is cast as a message to check if sender equals the message sender, the receiver equals the message receiver
-    //, the owner equals  the message owner, and if the timestamp equals the message timestamp. if all of this is true, the message is returned
+    // if true, a the object is cast as a message to check if sender equals the message sender,
+    // the receiver equals the message receiver
+    //, the owner equals  the message owner, and if the timestamp equals the message timestamp.
+    // if all of this is true, the message is returned
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

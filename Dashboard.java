@@ -6,9 +6,11 @@ import java.util.*;
 /**
  * Dashboard class
  * <p>
- * This class embodies all live interaction between the program and the user. The dashboard class utilizes the scanner for input
- * in order to execute the remaining methods. This class also houses the main method which is the only runnable program in the project.
- * Addional static void methods allow for the manipulation of program's users.
+ * This class embodies all live interaction between the program and the user.
+ * The dashboard class utilizes the scanner for input
+ * in order to execute the remaining methods.
+ * This class also houses the main method which is the only runnable program in the project.
+ * Additional static void methods allow for the manipulation of program's users.
  *
  * @author Amelia Williams, Meha Kavoori, Anish Puri, Tyler Barnett
  * @version Apr 10, 2022
@@ -161,7 +163,7 @@ public class Dashboard {
         return true;
     }
 
-    // this method allows for a user to choose a conversation and display its messagaes
+    // this method allows for a user to choose a conversation and display its messages
     private static void viewConversations(Scanner scanner, User user) {
         ArrayList<Conversation> convs = Messenger.getConversationsForUser(user);
 
@@ -187,8 +189,10 @@ public class Dashboard {
         }
     }
 
-    //This is the menu prints out the messages in the conversation and offers the user the choices to edit or delete them
-    private static void messageMenu(Scanner scanner, User current, Conversation conversation, ArrayList<Message> messages) {
+    //This is the menu prints out the messages in the conversation
+    // and offers the user the choices to edit or delete them
+    private static void messageMenu(Scanner scanner, User current, Conversation conversation,
+                                    ArrayList<Message> messages) {
         if (messages.size() == 0)
             System.out.println("There are no messages to view");
         else {
@@ -238,7 +242,8 @@ public class Dashboard {
         }
     }
 
-    //this method is for customers and inputs the store or seller to message and calls another method to send a seller a message
+    //this method is for customers and inputs the store or seller to message
+    // and calls another method to send a seller a message
     private static void sendNewMailCustomer(Scanner scanner, User user) {
         int choice;
         System.out.println("Would you like to:");
@@ -299,7 +304,8 @@ public class Dashboard {
         }
     }
 
-    //this method is for sellers and inputs the customer to message and calls another method to send a customer a message
+    //this method is for sellers and inputs the customer to message
+    // and calls another method to send a customer a message
     private static void sendNewMailSeller(Scanner scanner, User user) {
         int choice;
         System.out.println("Would you like to:");
