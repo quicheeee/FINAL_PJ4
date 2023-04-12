@@ -113,6 +113,22 @@ The sixth test case has
     6. Select to Edit Message
 	
         --Select the message to Seller 1
+	
+The seventh test case has
+	
+	--User logs in views messages
+	--User puts an invalid input
+	--User then views correct message
+	--User then deletes the message.
+	--User then views the message to find there are none, then imports a .txt file to the conversation but is incorrect
+	--User then blocks user (seller) and then tries to adds invalid input 
+The eighth test case has
+
+	--Seller bob logs in with email and passwords. 
+	--Seller bob then tries to send message. 
+	--Seller bob searches for spongebob, can't find spongebob, searches for karen
+        --sends message to karen, imports message, then exports message and creates store named Bob's Falafels, 
+	--User exits.
 
         
 
