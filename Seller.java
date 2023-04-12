@@ -104,13 +104,4 @@ public class Seller extends User {
         return false;
     }
 
-    // following method checks if the seller can message a customer by checking if an object is either an instance of
-    // a seller or customer then returns true if one of them are, then false if both are untrue
-    public boolean canMessage(Object o) {
-        if (o instanceof Seller || o instanceof Customer) {
-            return true;
-        }
-        return false;
-    }
-
 }

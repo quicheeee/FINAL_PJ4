@@ -3,6 +3,7 @@ package pj4;
 import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
+
 /**
  * Customer Class
  * The customer class represents a Customer object which extends User.
@@ -14,15 +15,18 @@ import java.util.ArrayList;
 // class implements serializable
 public class Customer extends User implements Serializable {
     private ArrayList<Store> storeList;
+
     // Customer Class Constructor takes in values extended from User class.
     public Customer(String name, String email, String password) {
         super(name, email, password);
 
     }
+
     // returns store list
     public ArrayList<Store> getStoreList() {
         return storeList;
     }
+
     // sets store list
     public void setStoreList(ArrayList<Store> storeList) {
         this.storeList = storeList;
@@ -32,7 +36,7 @@ public class Customer extends User implements Serializable {
         storeList.add(s);
     }
 
-    
+
     // returns desired seller from list of users
     public Seller getSeller(int index) {
         File f = new File("accounts.ser");
@@ -41,17 +45,18 @@ public class Customer extends User implements Serializable {
             if (u instanceof Seller) {
                 if (!this.getBlockedUsers().contains(u)) {
                     //if (!this.getBlockedBy().contains(u)) {
-                        if (count == index) {
-                            return (Seller) u;
-                        }
-                        count++;
-                //    }
+                    if (count == index) {
+                        return (Seller) u;
+                    }
+                    count++;
+                    //    }
                 }
             }
         }
         return null;
     }
-        // displays all sellers found in getUsers()
+
+    // displays all sellers found in getUsers()
     public void displaySellers() {
         File f = new File("accounts.ser");
         int count = 1;
@@ -64,17 +69,16 @@ public class Customer extends User implements Serializable {
         }
     }
 
-    
+
     @Override // checks for customer objects with equal values
     public boolean equals(Object o) {
         if (o instanceof Customer) {
             Customer customer = (Customer) o;
-            if (customer.getEmail().equals(this.getEmail()) && customer.getPassword().equals(this.getPassword())) {
-                return true;
-            }
+            return (customer.getEmail().equals(this.getEmail()) && customer.getPassword().equals(this.getPassword()));
         }
         return false;
     }
+
     // method determines that customer may only message sellers
     public boolean canMessage(Object o) {
         if (o instanceof Seller) {
