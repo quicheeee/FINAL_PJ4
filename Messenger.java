@@ -13,7 +13,7 @@ import java.util.*;
  * and search messages in messager.ser file.
  *
  * @version 04/10/2023
- * @auther Amelia Williams, Meha Kavoori, Anish Puri, Tyler Barnett
+ * @author Amelia Williams, Meha Kavoori, Anish Puri, Tyler Barnett
  */
 public class Messenger {
     private static final String FILENAME = "messages.ser"; // filename for file that holds messages

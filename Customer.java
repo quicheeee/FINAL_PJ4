@@ -79,14 +79,5 @@ public class Customer extends User implements Serializable {
         return false;
     }
 
-    // method determines that customer may only message sellers
-    public boolean canMessage(Object o) {
-        if (o instanceof Seller) {
-            return true;
-        }
-        return false;
-    }
-    //public Message newMessage (); // in progress
-
 
 }
