@@ -12,6 +12,13 @@ CS180 project 4 repo
 
 3. Class Descriptions
 
+
+Conversation class
+	This class represents a conversation object. The convnversation class represents the invidual conversations, sent between users. The
+	Class's constructor consists of a Customer, Seller and a Store. The class utilizes addMessage methods to add individual messages to the
+	conversations. The class also implements serializable and has been tested with other classes through test cases.
+	
+
 User Class
 
     This class is the parent class for all other types of users. The class implements the Serializable interface.
