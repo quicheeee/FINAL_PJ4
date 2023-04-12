@@ -555,8 +555,9 @@ public class Dashboard {
                 }
                 pw.close();
             } catch (FileNotFoundException fnfe) {
-            } catch (IOException ioe) {
-
+                ;
+            } catch (Exception e) {
+                ;
             }
         }
     }

@@ -41,7 +41,9 @@ public class Messenger {
                     temp.add(conversation);
                 }
             } catch (EOFException ex) {
+                ;
             } catch (FileNotFoundException ex2) {
+                ;
             }
 
         } catch (Exception e) {
