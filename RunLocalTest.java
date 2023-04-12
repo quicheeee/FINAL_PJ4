@@ -170,7 +170,7 @@ public class RunLocalTest {
                     "What is your email address?" + System.lineSeparator() +
                     "What would you like your password to be?" + System.lineSeparator() +
                     "Would you like to be:\n1. A Customer\n2. A Seller" + System.lineSeparator() +
-                    "What would you like your first store to be named?" + System.lineSeparator() +
+                    "What would you like your first store to be named?\n" + System.lineSeparator() +
                     "Seller Created" + System.lineSeparator();
 
 
@@ -282,8 +282,8 @@ public class RunLocalTest {
             String expected = "Welcome to the messaging platform!" + System.lineSeparator() +
                     "Would you like to:\n1. Create an Account\n2. Sign Into an Account" + System.lineSeparator() +
                     "What is your email address?" + System.lineSeparator() +
-                    "What is your password?" + System.lineSeparator() + "You have NEW messages!!!\n" + System.lineSeparator() +
-                    "What action would you like to take:\n" + "1. Send a new message\n" + "2. View messages\n" +
+                    "What is your password?" + System.lineSeparator() + "What action would you like to take:\n" +
+                    "1. Send a new message\n" + "2. View messages\n" +
                     "3. Block a User\n" + "4. Export\n" + "5. Import\n" + "6. Create a Store\n" + "7. Delete Account\n" +
                     "8. Add Filters\n" + "9. Exit" + System.lineSeparator() + "Num                       Customer                         Seller                          Store New\n" +
                     "  1                      Spongebob                         Krusty                The Krusty Krab   Y\n" +
