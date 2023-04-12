@@ -41,9 +41,9 @@ public class Messenger {
                     temp.add(conversation);
                 }
             } catch (EOFException ex) {
-                System.out.println("File processed.");
+                System.out.println();
             } catch (FileNotFoundException ex2) {
-                System.out.println("Message Storage File Created");
+                System.out.println();
             }
 
         } catch (Exception e) {
