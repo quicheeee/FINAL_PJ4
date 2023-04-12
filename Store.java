@@ -5,13 +5,12 @@ import java.util.*;
 
 /**
  * Store Class
- *
+ * <p>
  * The Store Class represents a Store object. The Store class has methods which allow users to
  * get, set, and access a list of Stores.
  *
  * @author Amelia Williams, Meha Kavoori, Anish Puri, Tyler Barnett
  * @version 4/10/2023
- *
  */
 public class Store implements Serializable {
     private Seller seller; // the store's seller
@@ -31,7 +30,7 @@ public class Store implements Serializable {
     }
 
     // returns all store obects associated with inputted user
-    public static ArrayList<Store> getAllStoresForUser (User u) {
+    public static ArrayList<Store> getAllStoresForUser(User u) {
         ArrayList<Store> all = new ArrayList<Store>();
 
         for (User temp : User.getUsers()) {
@@ -81,8 +80,8 @@ public class Store implements Serializable {
     public static boolean newStore(String name, Seller seller) {
         File list = new File("stores.ser");
         ArrayList<Store> stores = Store.listStores(list, Store.getNumStoresCreated());
-        for(Store s: stores) {
-            if(s.getStoreName().equals(name)){
+        for (Store s : stores) {
+            if (s.getStoreName().equals(name)) {
                 System.out.println("Store Name Taken");
                 return false;
             }
@@ -100,7 +99,7 @@ public class Store implements Serializable {
         try {
             FileInputStream fis = new FileInputStream(f);
             ObjectInputStream ois = new ObjectInputStream(fis);
-            for (int i = 0; i < fileLength; i++){
+            for (int i = 0; i < fileLength; i++) {
                 Store st = (Store) ois.readObject();
                 stores.add(st);
             }
@@ -111,38 +110,38 @@ public class Store implements Serializable {
     }
 
     // method reads numStoresCreated.txt file to get the number of stores created
-    public static int getNumStoresCreated(){
+    public static int getNumStoresCreated() {
         File f = new File("numStoresCreated.txt");
-        try{
+        try {
             FileReader fr = new FileReader(f);
             BufferedReader bfr = new BufferedReader(fr);
             return Integer.parseInt(bfr.readLine());
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return 0;
         }
     }
 
     // method sets the number in the nmStoresCreated.txt file
-    public static void setNumStoresCreated(int i){
-        File f = new File ("numStoresCreated.txt");
-        try{
+    public static void setNumStoresCreated(int i) {
+        File f = new File("numStoresCreated.txt");
+        try {
             FileWriter fw = new FileWriter(f);
             PrintWriter pw = new PrintWriter(fw);
             pw.println(i);
             pw.close();
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     // given arrList of stores, the method will write to a file the list of the stores.
-    public static void writeStores(ArrayList<Store> stores, File f){
-        try{
+    public static void writeStores(ArrayList<Store> stores, File f) {
+        try {
             FileOutputStream fos = new FileOutputStream(f);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
 
-            for(Store s1: stores) {
+            for (Store s1 : stores) {
                 oos.writeObject(s1);
             }
             oos.close();

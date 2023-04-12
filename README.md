@@ -1,23 +1,24 @@
- # FINAL_PJ4
+# FINAL_PJ4
 
 CS180 project 4 repo
 
 1. How to compile and run the Code.
 
-   To run the code first you need to just download the files, open in intelliJ and press run from the Dashboard.java file.
+   To run the code first you need to just download the files, open in intelliJ and press run from the Dashboard.java
+   file.
 
 2. Who submitted what
 
-   Meha Kavoori - Submitted Report on Brightspace. Student 2 - Submitted Vocareum workspace.
+   Meha Kavoori - Submitted Report on Brightspace. Amelia Williams - Submitted Vocareum workspace.
 
 3. Class Descriptions
 
-
 Conversation class
-	This class represents a conversation object. The convnversation class represents the invidual conversations, sent between users. The
-	Class's constructor consists of a Customer, Seller and a Store. The class utilizes addMessage methods to add individual messages to the
-	conversations. The class also implements serializable and has been tested with other classes through test cases.
-	
+This class represents a conversation object. The convnversation class represents the invidual conversations, sent
+between users. The
+Class's constructor consists of a Customer, Seller and a Store. The class utilizes addMessage methods to add individual
+messages to the
+conversations. The class also implements serializable and has been tested with other classes through test cases.
 
 User Class
 
@@ -25,7 +26,6 @@ User Class
     The class has methods which allow the user to set and get the email address, name and 
     password. The methods also can check other blocked users, as well as write user data to a text file. The User class has been tested through integration
     with its child classes Customer and Seller.
-
 
 Customer Class
 
@@ -89,7 +89,8 @@ The third test case creates a second seller (Seller 2).
 
 The fourth test case creates a second customer (Customer 2).
 
-The fifth test case has Customer 2 login, send a message ("hi") to Seller 2 via the selecting a customer option, and then exiting.
+The fifth test case has Customer 2 login, send a message ("hi") to Seller 2 via the selecting a customer option, and
+then exiting.
 
 The sixth test case has
 

@@ -1,20 +1,20 @@
 package pj4;
+
 import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
+
 /**
  * Seller class
- *
+ * <p>
  * The Seller class represents a seller object which is a type of user that interacts with
  * users of its type and customers. An intance of the class is created with attributes name,
  * email and password.
  *
  * @author Amelia Williams, Meha Kavoori, Anish Puri, Tyler Barnett
  * @version 4/10/2023
- *
  */
-public class Seller extends User
-{
+public class Seller extends User {
     private Customer[] customerList; // Seller's array of Customers
 
     private ArrayList<Store> listOfStores; // ArrayList of Seller's stores
@@ -68,7 +68,7 @@ public class Seller extends User
     }
 
     // following method gets the customer at a certain index from a file named "accounts.ser"
-    public Customer getCustomer(int index){
+    public Customer getCustomer(int index) {
         File f = new File("accounts.ser");
         int count = 1;
 /*
@@ -93,10 +93,10 @@ public class Seller extends User
     @Override
     // following method checks if an object is an instance of a seller before casting to a seller object to check
     // if the seller's email and password equals that of a seller that currently exists and returns false if it is not equal
-    public boolean equals(Object o){
-        if(o instanceof Seller) {
+    public boolean equals(Object o) {
+        if (o instanceof Seller) {
             Seller seller = (Seller) o;
-            if(seller.getEmail().equals(this.getEmail()) && seller.getPassword().equals(this.getPassword())) {
+            if (seller.getEmail().equals(this.getEmail()) && seller.getPassword().equals(this.getPassword())) {
                 return true;
             }
         }
@@ -112,4 +112,4 @@ public class Seller extends User
         return false;
     }
 
-    }
+}

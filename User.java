@@ -1,16 +1,16 @@
 package pj4;
+
 import java.io.*;
 import java.util.*;
+
 /**
  * User
- *
+ * <p>
  * This class creates a basic user for the application, with a name, email, and password associated.
  * It writes the users to file for storage after the program is terminated.
  *
  * @author Amelia Williams, Meha Kavoori, Anish Puri, Tyler Barnett
- *
  * @version 04/10/2023
- *
  */
 public class User implements Serializable {
     private String name; //the name of the user
@@ -24,7 +24,7 @@ public class User implements Serializable {
     private static final long serialVersionUID = -5554757084812506737L;
 
     //Constructor to create a user given their name, email, and password
-    public User(String name, String email, String password){
+    public User(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -58,20 +58,20 @@ public class User implements Serializable {
     }
 
     //returns an ArrayList of Users blocked by the given User
-    public ArrayList<User> getBlockedUsers(){
+    public ArrayList<User> getBlockedUsers() {
         return blockedUsers;
     }
 
     //sets the stored ArrayList of Users blocked by the given User to the inputted ArrayList
-    public void setBlockedUsers(ArrayList<User> blockedUsers){
+    public void setBlockedUsers(ArrayList<User> blockedUsers) {
         this.blockedUsers = blockedUsers;
     }
 
     //this method is used to verify login information when a user signs into the application
-    public static User signIn (String email, String password) {
+    public static User signIn(String email, String password) {
         ArrayList<User> users = getUsers();
-        for(User u: users) {
-            if(u.getEmail().equals(email) && u.getPassword().equals(password)){
+        for (User u : users) {
+            if (u.getEmail().equals(email) && u.getPassword().equals(password)) {
                 return u;
             }
             //else if(u.getEmail().equals(email)) {
@@ -82,16 +82,16 @@ public class User implements Serializable {
     }
 
     //a static method used to identify a User object from the associated email address
-    public static User findUserWithEmail(String email){
-        try{
+    public static User findUserWithEmail(String email) {
+        try {
             ArrayList<User> users = getUsers();
 
-            for(User u: users) {
-                if(u.getEmail().equals(email)) {
+            for (User u : users) {
+                if (u.getEmail().equals(email)) {
                     return u;
                 }
             }
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
@@ -103,10 +103,10 @@ public class User implements Serializable {
         ArrayList<User> users = getUsers();
         ArrayList<User> results = new ArrayList<User>();
 
-        for(User u: users) {
+        for (User u : users) {
             if (u instanceof Seller) {
                 if ((!(sender.getBlockedUsers().contains(u) || u.getBlockedUsers().contains(sender)))
-                    && (u.getEmail().indexOf(search) != -1))
+                        && (u.getEmail().indexOf(search) != -1))
                     results.add(u);
             }
         }
@@ -119,7 +119,7 @@ public class User implements Serializable {
         ArrayList<User> users = getUsers();
         ArrayList<User> results = new ArrayList<User>();
 
-        for(User u: users) {
+        for (User u : users) {
             if (u instanceof Customer) {
                 if ((!(sender.getBlockedUsers().contains(u) || u.getBlockedUsers().contains(sender)))
                         && (u.getEmail().indexOf(search) != -1))
@@ -134,7 +134,7 @@ public class User implements Serializable {
         ArrayList<User> users = getUsers();
         ArrayList<User> results = new ArrayList<User>();
 
-        for(User u: users) {
+        for (User u : users) {
             if (u instanceof Customer) {
                 if (!(sender.getBlockedUsers().contains(u) || u.getBlockedUsers().contains(sender)))
                     results.add(u);
@@ -147,15 +147,15 @@ public class User implements Serializable {
     //and then writes the user to file for storage of information
     public static boolean newUser(String name, String emailAddress, String password, String storeName, int userType) {
         ArrayList<User> users = User.getUsers();
-        for(User u: users) {
-            if(u.getEmail().equals(emailAddress)){
+        for (User u : users) {
+            if (u.getEmail().equals(emailAddress)) {
                 System.out.println("Email Taken");
                 return false;
             }
         }
 
         User u;
-        if(userType == 1) {
+        if (userType == 1) {
             //Customer Account
             u = new Customer(name, emailAddress, password);
             System.out.println("Customer Created");
@@ -179,13 +179,13 @@ public class User implements Serializable {
     }
 
     //given an ArrayList of Users, this method will write them to the file which stores them ("accounts.ser")
-    private static void writeUsers(ArrayList<User> users){
-        try{
+    private static void writeUsers(ArrayList<User> users) {
+        try {
             File f = new File("accounts.ser");
             FileOutputStream fos = new FileOutputStream(f);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
 
-            for(User u1: users) {
+            for (User u1 : users) {
                 oos.writeObject(u1);
             }
             oos.close();
@@ -197,7 +197,7 @@ public class User implements Serializable {
     //this method returns an ArrayList of Users with all of the users in the file "accounts.ser"
     public static ArrayList<User> getUsers() {
         if (User.allUsers != null)
-            return  User.allUsers;
+            return User.allUsers;
 
         ArrayList<User> users = new ArrayList<>();
         try {
@@ -230,10 +230,10 @@ public class User implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o){
-        if(o instanceof User){
+    public boolean equals(Object o) {
+        if (o instanceof User) {
             User u = (User) o;
-            if(u.getEmail().equals(email) && u.getPassword().equals(password) ) {
+            if (u.getEmail().equals(email) && u.getPassword().equals(password)) {
                 return true;
             }
         }
@@ -258,7 +258,7 @@ public class User implements Serializable {
 
     //this method adds a filter to the user
     public void addFilter(String original, String replacement) {
-        if((original == null) || (replacement == null))
+        if ((original == null) || (replacement == null))
             throw new IllegalArgumentException("Invalid filter strings");
 
         filters.add(original);
@@ -272,7 +272,7 @@ public class User implements Serializable {
             return message;
 
         for (int i = 0; i < filters.size(); i += 2) {
-            message = message.replace(filters.get(i), filters.get(i+1));
+            message = message.replace(filters.get(i), filters.get(i + 1));
         }
         return message;
     }

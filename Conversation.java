@@ -2,13 +2,13 @@ package pj4;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
 /**
  * Class Conversation
- *
+ * <p>
  * The conversation class represents individual conversations sent between different users.
  *
  * @author Amelia Williams, Meha Kavoori, Anish Puri, Tyler Barnett
- *
  * @version 04/10/2023
  */
 public class Conversation implements Serializable {

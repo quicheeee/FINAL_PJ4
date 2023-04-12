@@ -1,18 +1,17 @@
 package pj4;
+
 import java.io.*;
 import java.util.*;
 
 /**
  * Dashboard class
- *
+ * <p>
  * This class embodies all live interaction between the program and the user. The dashboard class utilizes the scanner for input
  * in order to execute the remaining methods. This class also houses the main method which is the only runnable program in the project.
  * Addional static void methods allow for the manipulation of program's users.
  *
  * @author Amelia Williams, Meha Kavoori, Anish Puri, Tyler Barnett
  * @version Apr 10, 2022
- *
- *
  */
 public class Dashboard {
 
@@ -21,11 +20,11 @@ public class Dashboard {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to the messaging platform!");
         boolean invalidinput = true;
-        while(invalidinput){
+        while (invalidinput) {
             System.out.printf("Would you like to:\n1. Create an Account\n2. Sign Into an Account\n");
             try {
                 int input = Integer.parseInt(scanner.nextLine());
-                if(input == 1) {
+                if (input == 1) {
                     invalidinput = createAccount(scanner);
                 } else if (input == 2) {
                     //Sign In To an Account
@@ -35,7 +34,7 @@ public class Dashboard {
                     System.out.println("What is your password?");
                     String password = scanner.nextLine();
                     User user = User.signIn(email, password);
-                    if(user != null) {
+                    if (user != null) {
                         if (Messenger.existsUnreadMessagesForUser(user))
                             System.out.println("You have NEW messages!!!");
 
@@ -47,8 +46,8 @@ public class Dashboard {
                             } else if (user instanceof Seller) {
                                 cont = sellerMenu(scanner, (Seller) user);
                             }
-                        } while(cont);
-                    } else if (user == null){
+                        } while (cont);
+                    } else if (user == null) {
                         System.out.println("Incorrect user id or password");
                     }
 
@@ -86,19 +85,19 @@ public class Dashboard {
                 exportText(scanner, seller);
                 break;
             }
-            case 5 : {
+            case 5: {
                 importText(scanner, seller);
                 break;
             }
-            case 6 : {
+            case 6: {
                 addStore(scanner, seller);
                 break;
             }
-            case 7 : {
+            case 7: {
                 boolean deleted = deleteAccount(scanner, seller);
                 return !deleted;
             }
-            case 8 : {
+            case 8: {
                 addFilters(scanner, seller);
                 break;
             }
@@ -137,7 +136,7 @@ public class Dashboard {
                 exportText(scanner, c);
                 break;
             }
-            case 5 : {
+            case 5: {
                 importText(scanner, c);
                 break;
             }
@@ -146,7 +145,7 @@ public class Dashboard {
                 return !deleted;
                 //break;
             }
-            case 7 : {
+            case 7: {
                 addFilters(scanner, c);
                 break;
             }
@@ -171,8 +170,7 @@ public class Dashboard {
         else {
             printConversationList(convs, user);
 
-            while (true)
-            {
+            while (true) {
                 System.out.println("Which conversation would you like to view:");
                 int i = scanner.nextInt();
                 scanner.nextLine();
@@ -200,8 +198,7 @@ public class Dashboard {
                 System.out.println(count++ + "  [" + m.getSender().getName() + "] " + temp);
             }
 
-            while (true)
-            {
+            while (true) {
                 int choice = getChosenNumber(scanner,
                         "\nActions:\n1. Edit a message\n2. Delete a message\n3. Back to menu", 3);
                 switch (choice) {
@@ -293,17 +290,17 @@ public class Dashboard {
             String message = scanner.nextLine();
 
             if (user instanceof Customer)
-                Messenger.sendNewMessage(user, stores.get(num - 1).getSeller(),message, false,
-                        (Customer) user,  stores.get(num - 1));
+                Messenger.sendNewMessage(user, stores.get(num - 1).getSeller(), message, false,
+                        (Customer) user, stores.get(num - 1));
             else
                 Messenger.sendNewMessage(user, receiver, message, false,
-                        receiver,  stores.get(num - 1));
+                        receiver, stores.get(num - 1));
             System.out.println("Your message is sent! Thank you.");
         }
     }
 
     //this method is for sellers and inputs the customer to message and calls another method to send a customer a message
-    private static void sendNewMailSeller (Scanner scanner, User user) {
+    private static void sendNewMailSeller(Scanner scanner, User user) {
         int choice;
         System.out.println("Would you like to:");
         System.out.printf("1. Select a customer to message\n2. Search for a customer to message\n");
@@ -322,7 +319,7 @@ public class Dashboard {
                     int num = getChosenNumber(scanner, "Please select a customer to message:", users.size());
 
                     ArrayList<Store> stores = ((Seller) user).getListOfStores();
-                    chooseStoreToMail(scanner, user, stores, (Customer) users.get(num-1));
+                    chooseStoreToMail(scanner, user, stores, (Customer) users.get(num - 1));
                 }
                 break;
             }
@@ -339,7 +336,7 @@ public class Dashboard {
 
                     int num = getChosenNumber(scanner, "Please select a customer to message:", users.size());
                     ArrayList<Store> stores = ((Seller) user).getListOfStores();
-                    chooseStoreToMail(scanner, user, stores, (Customer) users.get(num-1));
+                    chooseStoreToMail(scanner, user, stores, (Customer) users.get(num - 1));
                 }
                 break;
             }
@@ -363,18 +360,18 @@ public class Dashboard {
         String password = scanner.nextLine();
         System.out.printf("Would you like to be:%n1. A Customer%n2. A Seller%n");
         input = Integer.parseInt(scanner.nextLine());
-        if(input == 1) {
+        if (input == 1) {
             //Customer Account
-            User.newUser(name, email, password, "",1);
+            User.newUser(name, email, password, "", 1);
         } else if (input == 2) {
             //Seller Account
             System.out.println("What would you like your first store to be named?");
             String storeName = scanner.nextLine();
-            while(storeName.trim().equals("")){
+            while (storeName.trim().equals("")) {
                 System.out.println("Please enter a valid store name.");
             }
             try {
-                User.newUser(name, email, password, storeName,2);
+                User.newUser(name, email, password, storeName, 2);
             } catch (IllegalArgumentException ex) {
                 System.out.println(ex.getMessage());
             }
@@ -385,7 +382,7 @@ public class Dashboard {
     }
 
     //this method has a user search for and block another user
-    private static void blockUser (Scanner scanner, User user) {
+    private static void blockUser(Scanner scanner, User user) {
         ArrayList<User> users;
 
         System.out.println("Please search user you want to block:");
@@ -404,16 +401,15 @@ public class Dashboard {
 
             int num = getChosenNumber(scanner, "Please select a user to block:", users.size());
 
-            user.block(users.get(num-1));
+            user.block(users.get(num - 1));
             System.out.println("The block was set!");
         }
     }
 
-   //this method prints out the given prompt, the max input for the prompt,
-   // and prints out "invalid input" if the input is out of range
+    //this method prints out the given prompt, the max input for the prompt,
+    // and prints out "invalid input" if the input is out of range
     private static int getChosenNumber(Scanner scanner, String prompt, int max) {
-        while (true)
-        {
+        while (true) {
             System.out.println(prompt);
             int i = scanner.nextInt();
             scanner.nextLine();
@@ -428,7 +424,7 @@ public class Dashboard {
     }
 
     //this method is called if a user wants to delete their account and does so for them
-    private static boolean deleteAccount (Scanner scanner, User user) {
+    private static boolean deleteAccount(Scanner scanner, User user) {
         while (true) {
             System.out.println("Are you sure you want to delete your account?");
             System.out.println("1. Yes\n2. No");
@@ -514,53 +510,53 @@ public class Dashboard {
             printConversationList(convs, user);
             boolean invalid = true;
             int i = 0;
-            while(invalid){
-            System.out.println("Which conversation would you like to export:");
-            String convNums = scanner.nextLine();
-            try {
-                i = Integer.parseInt(convNums);
-                invalid = false;
-            } catch (NumberFormatException nfe) {
-                invalid = true;
-            }}
+            while (invalid) {
+                System.out.println("Which conversation would you like to export:");
+                String convNums = scanner.nextLine();
+                try {
+                    i = Integer.parseInt(convNums);
+                    invalid = false;
+                } catch (NumberFormatException nfe) {
+                    invalid = true;
+                }
+            }
             System.out.println("Please input a file path to write to ending in .csv");
             String input = scanner.nextLine();
 
             List<String[]> list = new ArrayList<>();
-            String [] headers = {"Timestamp", "Sender", "Receiver", "Message"};
+            String[] headers = {"Timestamp", "Sender", "Receiver", "Message"};
             list.add(headers);
-            for(Message m: convs.get(i-1).getMessages()){
+            for (Message m : convs.get(i - 1).getMessages()) {
                 String[] msg = {m.getCreateDate(), m.getSender().getName(), m.getReceiver().getName(), m.getMessage()};
                 list.add(msg);
             }
 
-            try{
+            try {
                 File csvOutput = new File(input);
                 FileWriter fw = new FileWriter(csvOutput);
                 PrintWriter pw = new PrintWriter(fw);
-                for(String[] s: list){
+                for (String[] s : list) {
                     int count = 1;
-                    for(String s1: s){
-                        if(count != 4) {
+                    for (String s1 : s) {
+                        if (count != 4) {
                             pw.print(s1);
                             pw.print(",");
                             count++;
-                        } else{
+                        } else {
                             pw.println(s1);
                         }
                     }
                 }
                 pw.close();
-            } catch (FileNotFoundException fnfe){
-            } catch(IOException ioe){
+            } catch (FileNotFoundException fnfe) {
+            } catch (IOException ioe) {
 
             }
         }
     }
 
     //adds a filter to the user's content view
-    private static void addFilters(Scanner scanner, User user)
-    {
+    private static void addFilters(Scanner scanner, User user) {
         ArrayList<String> filters = user.getFilters();
 
         if (filters.size() == 0)
@@ -576,8 +572,7 @@ public class Dashboard {
         System.out.println("1. Add a new filter\n2. Go back");
         int num = getChosenNumber(scanner, "Pick an option:", 2);
 
-        if (num == 1)
-        {
+        if (num == 1) {
             String original = "";
             while (original.equals("")) {
                 System.out.println("Please input what you want to filter:");
