@@ -282,7 +282,7 @@ public class RunLocalTest {
             String expected = "Welcome to the messaging platform!" + System.lineSeparator() +
                     "Would you like to:\n1. Create an Account\n2. Sign Into an Account" + System.lineSeparator() +
                     "What is your email address?" + System.lineSeparator() +
-                    "What is your password?" + System.lineSeparator() + "What action would you like to take:\n" +
+                    "What is your password?" + System.lineSeparator() + "\nWhat action would you like to take:\n" +
                     "1. Send a new message\n" + "2. View messages\n" +
                     "3. Block a User\n" + "4. Export\n" + "5. Import\n" + "6. Create a Store\n" + "7. Delete Account\n" +
                     "8. Add Filters\n" + "9. Exit" + System.lineSeparator() + "Num                       Customer                         Seller                          Store New\n" +
