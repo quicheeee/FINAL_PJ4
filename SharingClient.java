@@ -39,10 +39,10 @@ public class SharingClient {
         }
     }
 
-    public User signIn(String userID, String password) {
+    public User signIn(String email, String password) {
         try {
             out.writeObject("User.signIn");
-            out.writeObject(userID);
+            out.writeObject(email);
             out.writeObject(password);
             out.flush();
             loggedUser = (User) in.readObject();
@@ -101,7 +101,7 @@ public class SharingClient {
         }
     }
 
-    public boolean newUser(String name, String emailAddress, String password, String storeName, int userType) {
+    public User newUser(String name, String emailAddress, String password, String storeName, int userType) {
         try {
             out.writeObject("User.newUser");
             out.writeObject(name);
@@ -111,12 +111,12 @@ public class SharingClient {
             out.writeObject(userType);
             out.flush();
 
-            boolean temp = (boolean) in.readObject();
+            User temp = (User) in.readObject();
             return temp;
 
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
+            return null;
         }
     }
 
@@ -225,6 +225,64 @@ public class SharingClient {
     	
     }
     
+    public ArrayList<Message> getMessagesForUser(Conversation conversation, User user) {
+    	
+    	 try {
+             out.writeObject("Messenger.getMessagesForUser");
+             out.writeObject(conversation);
+             out.writeObject(user);
+             out.flush();
+
+             ArrayList<Message> temp = (ArrayList<Message>) in.readObject();
+             return temp;
+
+         } catch (Exception e) {
+             e.printStackTrace();
+             return null;
+         }	
+    	
+    }
+    
+    public boolean editMessage(Conversation conversation, Message m, String content, User user) {
+    	
+    	try {
+            out.writeObject("Messenger.editMessage");
+            out.writeObject(conversation);
+            out.writeObject(m);
+            out.writeObject(content);
+            out.writeObject(user);
+            out.flush();
+
+            boolean temp = (boolean) in.readObject();
+            return temp;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    	
+    }
+    
+    public boolean deleteMessage(Conversation conversation, Message m, User current) {
+    	
+    	try {
+            out.writeObject("Messenger.editMessage");
+            out.writeObject(conversation);
+            out.writeObject(m);
+            out.writeObject(current);
+
+            out.flush();
+
+            boolean temp = (boolean) in.readObject();
+            return temp;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    	
+    }
+    
     
 
     public void stopConnection() {
@@ -244,7 +302,7 @@ public class SharingClient {
         if (!client.startConnection())
             return;
 
-        client.newUserTest();
+       // client.newUserTest();
         if (!client.signInTest())
             return;
 
@@ -301,7 +359,7 @@ public class SharingClient {
         }
     }
 
-    public boolean newUserTest() {
+   /* public boolean newUserTest() {
         String name;
         String emailAddress;
         String password;
@@ -334,12 +392,12 @@ public class SharingClient {
             return false;
         }
 
-        boolean temp = newUser(name, emailAddress, password, storeName, userType);
-        if (!temp)
+        //boolean temp = newUser(name, emailAddress, password, storeName, userType);
+        //if (!temp)
             JOptionPane.showMessageDialog(null, "User could not be created. Email is taken.",
                     "Create User Error", JOptionPane.ERROR_MESSAGE);
 
-        return temp;
-    }
+        //return temp;
+    } */
 
 }
